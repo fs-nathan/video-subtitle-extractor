@@ -350,13 +350,73 @@ $RECYCLE.BIN/
 *.srt
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,python,pycharm+all,macos,windows
-/backend/models/V2/ch_det/inference.pdiparams
-/backend/models/V4/ch_det/inference.pdiparams
-/output/
-/backend/test.py
-/dylib/
-/settings.ini
-/test.py
-/test2.py
-/subtitle.ini
-/backend/models/**/*.onnx
+
+# ============================================
+# Project-specific ignores
+# ============================================
+
+# Models - Very large files, should not be committed
+# Users should download models separately or use git-lfs
+backend/models/
+!backend/models/.gitkeep
+
+# Test videos - Large video files
+test/*.mp4
+test/*.flv
+test/*.avi
+test/*.mov
+test/*.mkv
+
+# User videos
+mukbang/
+*.mp4
+*.flv
+*.avi
+*.mov
+*.mkv
+
+# Output files
+output/
+*.srt
+*.txt
+!README.txt
+
+# Virtual environments
+videoEnv/
+videoEnv312/
+venv/
+env/
+.venv/
+
+# User config files
+settings.ini
+subtitle.ini
+
+# Test scripts (temporary)
+test_run*.py
+test_output.log
+
+# Documentation files (temporary)
+*_FIX.md
+*_INSTRUCTIONS.md
+EXPLAIN_*.md
+COLAB_FIX.md
+SOLUTION.md
+TROUBLESHOOTING.md
+QUICK_FIX.md
+SETUP_COMPLETE.md
+RUN_GUI*.sh
+
+# Large design files
+design/*.pdf
+design/*.gif
+!design/demo.png
+!design/vse.ico
+
+# ONNX models
+*.onnx
+
+# Temporary files
+*.log
+*.tmp
+*.cache
