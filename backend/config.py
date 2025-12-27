@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 from fsplit.filesplit import Filesplit
 import paddle
-from tools.constant import *
+from backend.tools.constant import *
 
 # 项目版本号
 VERSION = "2.0.3"
@@ -230,15 +230,18 @@ if REC_CHAR_TYPE in MULTI_LANG:
 GENERATE_TXT = True
 
 # 每张图中同时识别6个文本框中的文本，GPU显存越大，该数值可以设置越大
-REC_BATCH_NUM = 6
+# Giảm xuống 3 để tránh memory issue trên macOS
+REC_BATCH_NUM = 3
 # DB算法每个batch识别多少张，默认为10
-MAX_BATCH_SIZE = 10
+# Giảm xuống 5 để tránh memory issue
+MAX_BATCH_SIZE = 5
 
 # 默认字幕出现区域为下方
 DEFAULT_SUBTITLE_AREA = SubtitleArea.UNKNOWN
 
 # 每一秒抓取多少帧进行OCR识别
-EXTRACT_FREQUENCY = 3
+# Giảm xuống 2 để nhanh hơn (ít frame hơn cần xử lý)
+EXTRACT_FREQUENCY = 2
 
 # 容忍的像素点偏差
 PIXEL_TOLERANCE_Y = 50  # 允许检测框纵向偏差50个像素点
